@@ -11,6 +11,7 @@ install:
   - sudo apt-get install libqt5xml5
   - sudo apt-get install libqt5gui5
   - sudo apt-get install libqt5widgets5
+  - ls -lsa /usr/include/qt5/QtWidgets
 
 script:
   - $(dpkg -L qt5-qmake | grep /bin/) apk_deeplink_extractor.pro
