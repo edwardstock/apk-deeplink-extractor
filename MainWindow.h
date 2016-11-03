@@ -9,7 +9,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include <QTextEdit>
 #include <QProcess>
 #include <QPushButton>
