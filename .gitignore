@@ -1,0 +1,9 @@
+apk_deeplink_extractor.pro.*
+*.user
+license
+*.o
+*.lo
+moc_*
+build/*
+nano
+.qmake.stash
