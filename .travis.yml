@@ -1,4 +1,5 @@
 dist: trusty
+sudo: required
 language: c++
 compiler:
   - gcc
@@ -12,5 +13,5 @@ install:
   - sudo apt-get install libqt5widgets5
 
 script:
-  - qmake apk_deeplink_extractor.pro
+  - $(dpkg -L qt5-qmake | grep /bin/) apk_deeplink_extractor.pro
   - make
