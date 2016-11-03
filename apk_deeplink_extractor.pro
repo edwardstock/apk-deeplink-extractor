@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml widgets
 
-equals(QT_MAJOR_VERSION, 5): QT += widgets
+lessThan(QT_MAJOR_VERSION, 5): error("requires Qt 5")
 
 TARGET = ApkDeeplinkExtractor
 

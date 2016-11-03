@@ -1,7 +1,13 @@
 language: c++
 compiler:
-  - clang
   - gcc
+
+install:
+  - sudo apt-get install qt5-qmake
+  - sudo apt-get install libqt5core5a
+  - sudo apt-get install libqt5xml5
+  - sudo apt-get install libqt5gui5
+  - sudo apt-get install libqt5widgets5
 
 script:
   - qmake apk_deeplink_extractor.pro
