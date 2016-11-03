@@ -11,7 +11,6 @@
 
 #include <QString>
 #include <QFile>
-#include <qlogging.h>
 #include <QVector>
 #include <QDebug>
 #include <QRegularExpression>
