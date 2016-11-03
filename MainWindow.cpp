@@ -6,17 +6,14 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
-#include <QDebug>
 #include <QMessageBox>
 #include <QCryptographicHash>
-#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-    ui(new Ui::MainWindow)
-
+                                          ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     this->setWindowTitle("APK Deeplink Extractor Tool");
@@ -30,23 +27,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 void MainWindow::openFileDialog()
 {
     QString filePath = QFileDialog::getOpenFileName(
-                this,
-                tr("Select APK file"),
-                QDir::homePath(),
-                tr("Android APK file (*.apk)")
+        this,
+        tr("Select APK file"),
+        QDir::homePath(),
+        tr("Android APK file (*.apk)")
     );
 
     this->apkPath = filePath;
     this->tmpDir = QDir::tempPath();
     this->tmpDir
-            .append("/")
-            .append(
-                QCryptographicHash::hash((filePath.toLocal8Bit()),QCryptographicHash::Md5).toHex()
-            );
+        .append("/")
+        .append(
+            QCryptographicHash::hash((filePath.toLocal8Bit()), QCryptographicHash::Md5).toHex()
+        );
 
     QDir t(this->tmpDir);
-    if(!t.exists()) {
-        if(!t.mkpath(this->tmpDir)) {
+    if (!t.exists()) {
+        if (!t.mkpath(this->tmpDir)) {
             this->showError("Cannot create tmp dir");
             return;
         }
@@ -57,21 +54,20 @@ void MainWindow::openFileDialog()
     this->ui->selectedFile->setText(filePath);
 }
 
-
 void MainWindow::extractFile()
 {
-    if(!apkSelected()) {
+    if (!apkSelected()) {
         this->showError("Please, choose file first");
         return;
     }
 
-    if(manifestExtracted()) {
+    if (manifestExtracted()) {
         extractFinished(0, QProcess::ExitStatus::NormalExit);
         return;
     }
 
     QProcess *p = new QProcess(this);
-    if(p == NULL) {
+    if (p == NULL) {
         this->showError("Cannot open external process");
         return;
     }
@@ -80,12 +76,13 @@ void MainWindow::extractFile()
     QString execArg = QDir::currentPath().append("/").append(EXECUTABLE);
     QString cmd(SYS_EX);
 
-    if(!FileHelper::exists(cmd) || !FileHelper::isExecutable(cmd) || !FileHelper::exists(execArg) || !FileHelper::isExecutable(execArg)) {
+    if (!FileHelper::exists(cmd) || !FileHelper::isExecutable(cmd) || !FileHelper::exists(execArg)
+        || !FileHelper::isExecutable(execArg)) {
         this->showError(QString("Cannot find or execute command ").append(cmd));
         return;
     }
 
-    if(QString(SYS_EX_ARG) != "") {
+    if (QString(SYS_EX_ARG) != "") {
         arguments << SYS_EX_ARG;
     }
 
@@ -108,12 +105,12 @@ void MainWindow::extractFile()
     p->waitForStarted();
 
     connect(p, SIGNAL(readyReadStandardOutput()), this, SLOT(writeOutput()));
-    connect(p, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(extractFinished(int, QProcess::ExitStatus)));
+    connect(p, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(extractFinished(int, QProcess::ExitStatus)));
 }
 
 void MainWindow::writeOutput()
 {
-    QProcess *process = dynamic_cast<QProcess*>( sender() );
+    QProcess *process = dynamic_cast<QProcess *>( sender());
     ui->processResult->append(process->readAllStandardOutput());
     ui->processResult->append(process->readAllStandardError());
 }
@@ -122,21 +119,21 @@ void MainWindow::extractFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     qDebug() << "Finished: " << exitCode;
     qDebug() << "Finished status: " << exitStatus;
-    if(exitCode == 0) {
+    if (exitCode == 0) {
         ui->processResult->append("Extracting done.");
-        QProcess *process = dynamic_cast<QProcess*>( sender() );
+        QProcess *process = dynamic_cast<QProcess *>( sender());
         delete process;
     }
 
     ManifestParser *parser = new ManifestParser(getManifestPath());
 
-    if(!parser->parse()) {
+    if (!parser->parse()) {
         this->ui->outDeeplinks->append("No one deeplink was found");
     } else {
         QVector<ManifestParser::Link> links = parser->getDeeplinks();
-        foreach (ManifestParser::Link link, links) {
-            this->ui->outDeeplinks->append(QString(link.scheme).append("://").append(link.route));
-        }
+            foreach (ManifestParser::Link link, links) {
+                this->ui->outDeeplinks->append(QString(link.scheme).append("://").append(link.route));
+            }
     }
 
     delete parser;

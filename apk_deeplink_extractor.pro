@@ -15,13 +15,13 @@ TEMPLATE = app
 ICON = res/icon.icns
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    filehelper.cpp \
-    manifestparser.cpp
+        MainWindow.cpp \
+    classes/helpers/FileHelper.cpp \
+    classes/parser/ManifestParser.cpp
 
 HEADERS  += mainwindow.h \
-    filehelper.h \
-    manifestparser.h
+    classes/helpers/FileHelper.h \
+    classes/parser/ManifestParser.h
 
 FORMS    += mainwindow.ui
 
@@ -50,6 +50,3 @@ INSTALLS += ext_tool
 VERSION = "1.0.0"
 
 DEFINES += "ADE_VERSION=1.0.0"
-
-QMAKE_TARGET_COMPANY = RussianVentures
-

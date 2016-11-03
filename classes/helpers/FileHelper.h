@@ -19,7 +19,6 @@ public:
     FileHelper() = delete;
     ~FileHelper() = delete;
 
-
     bool static exists(const QString path);
     bool static isExecutable(const QString path);
 

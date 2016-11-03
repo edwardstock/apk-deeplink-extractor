@@ -19,7 +19,8 @@
 class ManifestParser
 {
 public:
-    typedef struct Link {
+    typedef struct Link
+    {
         QString scheme;
         QString route;
     } Link;

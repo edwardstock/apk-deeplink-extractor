@@ -1,0 +1,8 @@
+language: c++
+compiler:
+  - clang
+  - gcc
+
+script:
+  - qmake apk_deeplink_extractor.pro
+  - make

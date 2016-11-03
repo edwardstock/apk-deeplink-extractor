@@ -1,9 +1,11 @@
+.idea
 apk_deeplink_extractor.pro.*
 *.user
 license
 *.o
 *.lo
 moc_*
-build/*
-nano
+build
 .qmake.stash
+cmake-build-debug
+Makefile

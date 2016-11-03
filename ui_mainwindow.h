@@ -19,7 +19,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
@@ -38,7 +37,6 @@ public:
     QPushButton *extract;
     QLabel *label_3;
     QTextEdit *processResult;
-    QScrollBar *verticalScrollBar;
     QLabel *label_4;
     QLabel *selectedFile;
     QMenuBar *menuBar;
@@ -71,16 +69,12 @@ public:
         extract->setGeometry(QRect(50, 60, 171, 24));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(30, 300, 91, 16));
+        label_3->setGeometry(QRect(30, 300, 131, 16));
         processResult = new QTextEdit(centralWidget);
         processResult->setObjectName(QStringLiteral("processResult"));
-        processResult->setGeometry(QRect(30, 130, 711, 160));
+        processResult->setGeometry(QRect(30, 130, 721, 160));
         processResult->setUndoRedoEnabled(false);
         processResult->setReadOnly(true);
-        verticalScrollBar = new QScrollBar(centralWidget);
-        verticalScrollBar->setObjectName(QStringLiteral("verticalScrollBar"));
-        verticalScrollBar->setGeometry(QRect(740, 130, 16, 160));
-        verticalScrollBar->setOrientation(Qt::Vertical);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(30, 110, 60, 16));
@@ -115,7 +109,7 @@ public:
         label->setText(QApplication::translate("MainWindow", "1.", 0));
         label_2->setText(QApplication::translate("MainWindow", "2.", 0));
         extract->setText(QApplication::translate("MainWindow", "Extract", 0));
-        label_3->setText(QApplication::translate("MainWindow", "Deeplinks", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Possible deeplinks", 0));
         label_4->setText(QApplication::translate("MainWindow", "Output", 0));
         selectedFile->setText(QString());
         menuAtlas_APK_Depplink_extractor->setTitle(QApplication::translate("MainWindow", "Atlas APK Depplink extractor", 0));

@@ -16,8 +16,8 @@
 #include <QString>
 #include <QDesktopServices>
 #include <QVector>
-#include "filehelper.h"
-#include "manifestparser.h"
+#include "classes/helpers/FileHelper.h"
+#include "classes/parser/ManifestParser.h"
 
 #ifdef _WIN32
 #define EXECUTABLE "apktool.bat"
@@ -33,25 +33,25 @@
 #define SYS_EX_ARG ""
 #endif
 
-namespace Ui {
+namespace Ui
+{
 class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
 
-    Q_OBJECT
+Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 public slots:
-   void openFileDialog();
-   void extractFile();
-   void writeOutput();
-   void extractFinished(int, QProcess::ExitStatus);
-
+    void openFileDialog();
+    void extractFile();
+    void writeOutput();
+    void extractFinished(int, QProcess::ExitStatus);
 
 private:
     Ui::MainWindow *ui;
