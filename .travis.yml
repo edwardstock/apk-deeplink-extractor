@@ -7,6 +7,7 @@ compiler:
 install:
   - sudo apt-get update
   - sudo apt-get install qt5-qmake
+  - sudo apt-get install qt5-default
   - sudo apt-get install libqt5core5a
   - sudo apt-get install libqt5gui5
   - sudo apt-get install libqt5widgets5

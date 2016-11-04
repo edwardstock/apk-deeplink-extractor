@@ -50,3 +50,5 @@ INSTALLS += ext_tool
 VERSION = "1.0.0"
 
 DEFINES += "ADE_VERSION=1.0.0"
+
+QMAKE_CXXFLAGS += -std=c++11
