@@ -19,7 +19,7 @@
 #include "classes/helpers/FileHelper.h"
 #include "classes/parser/ManifestParser.h"
 
-#ifdef _WIN32
+#if _WIN32 || _WIN64
 #define EXECUTABLE "apktool.bat"
 #define SYS_EX "cmd.exe"
 #define SYS_EX_ARG "/C"
