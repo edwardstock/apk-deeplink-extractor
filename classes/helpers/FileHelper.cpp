@@ -19,7 +19,8 @@ bool FileHelper::isExecutable(const QString path) {
 }
 
 bool FileHelper::getExtension(QString source, QString *result) {
-    QRegularExpression extReg("^.*\\.((xml|apk)+)$");
+    QRegularExpression extReg("^.*\\.([a-z0-9]+)$");
+    extReg.setPatternOptions(QRegularExpression::PatternOption::CaseInsensitiveOption);
     QRegularExpressionMatch match = extReg.match(source);
     if (!match.hasMatch()) {
         return false;
