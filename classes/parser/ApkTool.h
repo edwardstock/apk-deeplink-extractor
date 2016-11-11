@@ -34,8 +34,6 @@ public:
         ParseError,
     };
 
-    Q_ENUM(Status);
-
     explicit ApkTool(QObject *_parent);
 
     ApkTool(ApkTool &that) = delete;
