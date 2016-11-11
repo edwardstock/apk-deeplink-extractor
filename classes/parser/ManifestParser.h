@@ -1,11 +1,11 @@
-/***************************************************************************
- *                                                                         *
- *   Copyright (C) 2016 					                               *
- *   https://github.com/edwardstock										   *
- *   Author: Eduard Maximovich <edward.vstock@gmail.com>				   *
- *                                                                         *
- ***************************************************************************/
-
+/**
+ * ApkDeeplinkExtractor
+ * ManifestParser.h
+ *
+ * @author Eduard Maximovich <edward.vstock@gmail.com>
+ * @link https://github.com/edwardstock
+ * @copyright 2016 GNU General Public License v3
+ */
 #ifndef MANIFESTPARSER_H
 #define MANIFESTPARSER_H
 

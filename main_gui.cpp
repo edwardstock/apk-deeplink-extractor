@@ -1,6 +1,6 @@
 /**
  * ApkDeeplinkExtractor
- * main_cli.cpp
+ * main_gui.cpp
  *
  * @author Eduard Maximovich <edward.vstock@gmail.com>
  * @link https://github.com/edwardstock

@@ -1,10 +1,11 @@
-/***************************************************************************
- *                                                                         *
- *   Copyright (C) 2016 					                               *
- *   https://github.com/edwardstock										   *
- *   Author: Eduard Maximovich <edward.vstock@gmail.com>				   *
- *                                                                         *
- ***************************************************************************/
+/**
+ * ApkDeeplinkExtractor
+ * FileHelper.h
+ *
+ * @author Eduard Maximovich <edward.vstock@gmail.com>
+ * @link https://github.com/edwardstock
+ * @copyright 2016 GNU General Public License v3
+ */
 
 #ifndef FILEHELPER_H
 #define FILEHELPER_H

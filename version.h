@@ -1,3 +1,12 @@
+/**
+ * ApkDeeplinkExtractor
+ * FileHelper.cpp
+ *
+ * @author Eduard Maximovich <edward.vstock@gmail.com>
+ * @link https://github.com/edwardstock
+ * @copyright 2016 GNU General Public License v3
+ */
+
 #ifndef VERSION_H
 #define VERSION_H
 
