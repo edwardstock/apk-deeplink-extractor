@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Chose APK</string>
+        <string>Select APK</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -134,25 +134,32 @@
      <string/>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>778</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuAtlas_APK_Depplink_extractor">
-    <property name="title">
-     <string>Atlas APK Depplink extractor</string>
+      <widget class="QCheckBox" name="asIntent">
+          <property name="geometry">
+              <rect>
+                  <x>230</x>
+                  <y>60</y>
+                  <width>161</width>
+                  <height>24</height>
+              </rect>
+          </property>
+          <property name="text">
+              <string>as &quot;intent&quot;</string>
+          </property>
+      </widget>
+      <widget class="QCheckBox" name="clearCache">
+          <property name="geometry">
+              <rect>
+                  <x>230</x>
+                  <y>90</y>
+                  <width>161</width>
+                  <height>24</height>
+              </rect>
+          </property>
+          <property name="text">
+              <string>overwrite cache</string>
     </property>
    </widget>
-   <addaction name="menuAtlas_APK_Depplink_extractor"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

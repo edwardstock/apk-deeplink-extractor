@@ -12,22 +12,22 @@
 #include <QFile>
 #include <QString>
 #include <QDebug>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
-class FileHelper
-{
+class FileHelper {
 public:
     FileHelper() = delete;
+
     ~FileHelper() = delete;
 
     bool static exists(const QString path);
+
     bool static isExecutable(const QString path);
 
-private:
-#ifdef QT_DEBUG
-    const bool static debug = true;
-#else
-    const bool static debug = false;
-#endif
+    bool static getExtension(QString source, QString *result);
+
+    bool static getExtension(QFile source, QString *result);
 };
 
 #endif // FILEHELPER_H

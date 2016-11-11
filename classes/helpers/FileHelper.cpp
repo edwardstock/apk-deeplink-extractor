@@ -8,23 +8,25 @@
 
 #include "FileHelper.h"
 
-bool FileHelper::exists(const QString path)
-{
-    bool exists = QFile(path).exists();
-    if (debug) {
-        qDebug() << "File exists: " << path << " - " << (exists ? "true" : "false");
-    }
-
-    return exists;
+bool FileHelper::exists(const QString path) {
+    return QFile(path).exists();
 }
 
-bool FileHelper::isExecutable(const QString path)
-{
+bool FileHelper::isExecutable(const QString path) {
     QFile f(path);
-    bool isEx = (f.permissions() & QFile::Permission::ExeUser) > 0;
-    if (debug) {
-        qDebug() << "File executable: " << path << " - " << (isEx ? "true" : "false");
-    }
+    return (f.permissions() & QFile::Permission::ExeUser) > 0;
+}
 
-    return isEx;
+bool FileHelper::getExtension(QString source, QString *result) {
+    QRegularExpression extReg("^.*\\.((xml|apk)+)$");
+    QRegularExpressionMatch match = extReg.match(source);
+    if (!match.hasMatch()) {
+        return false;
+    }
+    *result = match.captured(1);
+    return true;
+}
+
+bool FileHelper::getExtension(QFile source, QString *result) {
+    return getExtension(source.fileName(), result);
 }

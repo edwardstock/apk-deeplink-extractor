@@ -13,11 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
@@ -39,8 +38,8 @@ public:
     QTextEdit *processResult;
     QLabel *label_4;
     QLabel *selectedFile;
-    QMenuBar *menuBar;
-    QMenu *menuAtlas_APK_Depplink_extractor;
+    QCheckBox *asIntent;
+    QCheckBox *clearCache;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -81,21 +80,19 @@ public:
         selectedFile = new QLabel(centralWidget);
         selectedFile->setObjectName(QStringLiteral("selectedFile"));
         selectedFile->setGeometry(QRect(230, 20, 511, 24));
+        asIntent = new QCheckBox(centralWidget);
+        asIntent->setObjectName(QStringLiteral("asIntent"));
+        asIntent->setGeometry(QRect(230, 60, 161, 24));
+        clearCache = new QCheckBox(centralWidget);
+        clearCache->setObjectName(QStringLiteral("clearCache"));
+        clearCache->setGeometry(QRect(230, 90, 161, 24));
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 778, 22));
-        menuAtlas_APK_Depplink_extractor = new QMenu(menuBar);
-        menuAtlas_APK_Depplink_extractor->setObjectName(QStringLiteral("menuAtlas_APK_Depplink_extractor"));
-        MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
-
-        menuBar->addAction(menuAtlas_APK_Depplink_extractor->menuAction());
 
         retranslateUi(MainWindow);
 
@@ -105,14 +102,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        apkSelect->setText(QApplication::translate("MainWindow", "Chose APK", 0));
+        apkSelect->setText(QApplication::translate("MainWindow", "Select APK", 0));
         label->setText(QApplication::translate("MainWindow", "1.", 0));
         label_2->setText(QApplication::translate("MainWindow", "2.", 0));
         extract->setText(QApplication::translate("MainWindow", "Extract", 0));
         label_3->setText(QApplication::translate("MainWindow", "Possible deeplinks", 0));
         label_4->setText(QApplication::translate("MainWindow", "Output", 0));
         selectedFile->setText(QString());
-        menuAtlas_APK_Depplink_extractor->setTitle(QApplication::translate("MainWindow", "Atlas APK Depplink extractor", 0));
+        asIntent->setText(QApplication::translate("MainWindow", "as \"intent\"", 0));
+        clearCache->setText(QApplication::translate("MainWindow", "overwrite cache", 0));
     } // retranslateUi
 
 };

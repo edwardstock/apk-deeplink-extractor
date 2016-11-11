@@ -3,6 +3,7 @@ sudo: required
 language: c++
 compiler:
   - gcc
+  - clang
 
 install:
   - sudo apt-get update
@@ -15,3 +16,4 @@ install:
 script:
   - $(dpkg -L qt5-qmake | grep /bin/) apk_deeplink_extractor.pro
   - make
+  - $(dpkg -L qt5-qmake | grep /bin/) apk_deeplink_extractor.pro "CONFIG+=console"
