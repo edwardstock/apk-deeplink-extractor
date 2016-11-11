@@ -9,3 +9,7 @@ build
 .qmake.stash
 cmake-build-debug
 Makefile
+.vs
+*.aps
+debug/
+release/
