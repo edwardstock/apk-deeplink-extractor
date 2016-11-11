@@ -159,10 +159,10 @@ void CliParser::formatOutput(QVector<ManifestParser::Link> &links) {
     QJsonDocument doc;
     QJsonArray jsonArray;
             foreach(ManifestParser::Link link, links) {
-            jsonArray << link.toString(this->asIntent);
+            jsonArray.push_back(QJsonValue(link.toString(this->asIntent)));
         }
 
     doc.setArray(jsonArray);
 
-    cout << doc.toJson().toStdString() << endl;
+    cout << QString(doc.toJson()).toStdString() << endl;
 }

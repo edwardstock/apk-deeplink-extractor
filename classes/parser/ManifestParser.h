@@ -22,8 +22,7 @@ public:
     private:
         QString _intent;
     public:
-        Link()
-                : _intent(QString()) {}
+        Link() : _intent(QString()) {}
 
         QString packageId;
         QString scheme;
