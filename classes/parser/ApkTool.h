@@ -10,6 +10,7 @@
 #ifndef APKDEEPLINKEXTRACTOR_APKTOOL_H
 #define APKDEEPLINKEXTRACTOR_APKTOOL_H
 
+#include <QCoreApplication>
 #include <QObject>
 #include <QProcess>
 #include <QString>

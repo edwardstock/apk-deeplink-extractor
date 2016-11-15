@@ -83,10 +83,11 @@ QString ApkTool::getExecutor() const {
 
 QStringList ApkTool::buildArguments(Status *status) {
     QStringList arguments;
-    QString execArg = (QString &&) QDir::currentPath().append("/").append(EXECUTABLE);
+    QString execArg = (QString &&) QCoreApplication::applicationDirPath().append("/").append(EXECUTABLE);
 
     if (!FileHelper::exists(execArg)) {
         *status = Status::ApktoolNotFound;
+
         return arguments;
     }
 
