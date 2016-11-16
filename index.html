@@ -44,36 +44,44 @@
 
 <section class="main-content">
     <h1>
-        <a id="apk-deeplink-extractor" class="anchor" href="#apk-deeplink-extractor" aria-hidden="true"><span
-                aria-hidden="true" class="octicon octicon-link"></span></a>apk-deeplink-extractor</h1>
+        <a id="apk-deeplink-extractor" class="anchor" href="#apk-deeplink-extractor" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>apk-deeplink-extractor
+    </h1>
 
     <p>GUI and CLI Tool for extracting deeplink schemas from android manifest file, using apktool</p>
 
-    <p><a href="https://travis-ci.org/edwardstock/apk-deeplink-extractor"><img
-            src="https://travis-ci.org/edwardstock/apk-deeplink-extractor.svg?branch=master" alt="Build Status"></a></p>
+    <p>
+        <a href="https://travis-ci.org/edwardstock/apk-deeplink-extractor">
+            <img src="https://travis-ci.org/edwardstock/apk-deeplink-extractor.svg?branch=master" alt="Build Status">
+        </a>
+    </p>
 
     <h2>
-        <a id="latest-release-110" class="anchor" href="#latest-release-110" aria-hidden="true"><span aria-hidden="true"
-                                                                                                      class="octicon octicon-link"></span></a>Latest
-        release 1.1.0</h2>
+        <a id="latest-release-110" class="anchor" href="#latest-release-110" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Latest release 1.1.0
+    </h2>
 
     <ul>
-        <li>macOS (min 10.7): <a
-                href="https://github.com/edwardstock/apk-deeplink-extractor/releases/download/1.1.0/ade_image_1.1.0.dmg">dmg</a>
+        <li>macOS (min 10.7):
+            <a href="https://github.com/edwardstock/apk-deeplink-extractor/releases/download/1.1.1/ade_image_1.1.1.dmg">dmg</a>
         </li>
-        <li>Windows x86-64 installer: <a
-                href="https://github.com/edwardstock/apk-deeplink-extractor/releases/download/1.1.0/ade_installer_win32_1.1.0.exe">installer</a>
+        <li>Windows x86-64 installer:
+            <a href="https://github.com/edwardstock/apk-deeplink-extractor/releases/download/1.1.0/ade_installer_win32_1.1.0.exe">installer</a>
         </li>
     </ul>
 
     <h2>
-        <a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true"
-                                                                                  class="octicon octicon-link"></span></a>Building
+        <a id="building" class="anchor" href="#building" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Building
     </h2>
 
     <h3>
-        <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true"
-                                                                                          class="octicon octicon-link"></span></a>Requirements
+        <a id="requirements" class="anchor" href="#requirements" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Requirements
     </h3>
 
     <ul>
@@ -83,22 +91,27 @@
     </ul>
 
     <h4>
-        <a id="build-gui" class="anchor" href="#build-gui" aria-hidden="true"><span aria-hidden="true"
-                                                                                    class="octicon octicon-link"></span></a>Build
-        GUI</h4>
+        <a id="build-gui" class="anchor" href="#build-gui" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Build GUI
+    </h4>
 
-    <div class="highlight highlight-source-shell"><pre>qmake apk_deeplink_extractor.pro
+    <div class="highlight highlight-source-shell">
+        <pre>
+qmake apk_deeplink_extractor.pro
 make
-make install</pre>
+make install
+</pre>
     </div>
 
     <h4>
-        <a id="build-cli-tool" class="anchor" href="#build-cli-tool" aria-hidden="true"><span aria-hidden="true"
-                                                                                              class="octicon octicon-link"></span></a>Build
-        CLI tool</h4>
+        <a id="build-cli-tool" class="anchor" href="#build-cli-tool" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>Build CLI tool
+    </h4>
 
-    <div class="highlight highlight-source-shell"><pre>qmake apk_deeplink_extractor.pro <span class="pl-s"><span
-            class="pl-pds">"</span>CONFIG+=console<span class="pl-pds">"</span></span>
+    <div class="highlight highlight-source-shell">
+        <pre>qmake apk_deeplink_extractor.pro <span class="pl-s"><span class="pl-pds">"</span>CONFIG+=console<span class="pl-pds">"</span></span>
 make
 make install</pre>
     </div>
