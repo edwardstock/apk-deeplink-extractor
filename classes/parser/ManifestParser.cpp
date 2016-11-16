@@ -10,13 +10,12 @@
 #include "ManifestParser.h"
 
 const QString ManifestParser::statusMessages[] = {
-        "Success",
-        "Manifest file not found or empty"
+    "Success",
+    "Manifest file not found or empty"
 };
 
 ManifestParser::ManifestParser(const QString &manifestPath) :
-        status(Status::Success)
-{
+    status(Status::Success) {
     this->path = new QFile(manifestPath);
     this->deeplinks = QVector<Link>();
 
@@ -26,9 +25,8 @@ ManifestParser::ManifestParser(const QString &manifestPath) :
 }
 
 ManifestParser::ManifestParser(ManifestParser &that) :
-        status(that.status),
-        deeplinks(that.deeplinks)
-{
+    status(that.status),
+    deeplinks(that.deeplinks) {
     this->path = new QFile(that.path->fileName());
 }
 
@@ -42,15 +40,16 @@ bool ManifestParser::parse() {
     }
 
     QString xml = this->path->readAll();
-    QString
-            pattern(
-            "data android:host=\"([a-zA-Z0-9-_\\.\\/\\\\]+)\"\\sandroid:scheme=\"([a-zA-Z0-9-_\\.\\/\\\\]+)\".*");
+    QString pattern(
+        "android:(scheme|host)=\"([a-zA-Z0-9-_\\.\\/\\\\]+)\"\\s+android:(scheme|host)=\"([a-zA-Z0-9-_\\.\\/\\\\]+)\"|android:(scheme)=\"([a-zA-Z0-9-_\\.\\/\\\\]+)\""
+    );
 
     QRegularExpression rx(pattern);
     rx.setPatternOptions(
-            QRegularExpression::PatternOption::MultilineOption |
-            QRegularExpression::PatternOption::CaseInsensitiveOption
-            | QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+        QRegularExpression::PatternOption::MultilineOption
+            | QRegularExpression::PatternOption::CaseInsensitiveOption
+            | QRegularExpression::PatternOption::UseUnicodePropertiesOption
+    );
 
     QRegularExpressionMatchIterator result = rx.globalMatch(xml);
 
@@ -62,14 +61,43 @@ bool ManifestParser::parse() {
     }
 
     int found = 0;
+
     while (result.hasNext()) {
         QRegularExpressionMatch m = result.next();
 
         Link link;
         link.packageId = packageId;
-        link.scheme = m.captured(2);
-        link.route = m.captured(1);
-        if (link.scheme == "http" || link.scheme == "https") continue;
+
+        QString scheme, route;
+
+        if (!m.captured(5).isNull() && !m.captured(6).isNull()) {
+            scheme = m.captured(6);
+        } else if (!m.captured(1).isNull() && !m.captured(2).isNull() && !m.captured(3).isNull()
+            && !m.captured(4).isNull()) {
+            if (m.captured(1) == "host") {
+                route = m.captured(2);
+                scheme = m.captured(4);
+            } else {
+                route = m.captured(4);
+                scheme = m.captured(2);
+            }
+        } else {
+            continue;
+        }
+
+        link.scheme = scheme;
+        link.route = route;
+
+        if (
+            link.scheme == "http"
+                || link.scheme == "https"
+                || link.scheme == "file"
+                || link.scheme == "package"
+                || link.scheme == "sms"
+                || link.scheme == "smsto"
+            )
+            continue;
+
         deeplinks.push_back(link);
         found++;
     }
